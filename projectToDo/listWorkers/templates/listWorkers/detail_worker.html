@@ -1,0 +1,18 @@
+ {% extends 'listWorkers/base.html' %}
+{% load static %}
+
+<!--{% block css_aditional %}-->
+<!--<link rel="stylesheet" href="{% static 'notes/css/view_notebooks.css'%}">-->
+<!--{% endblock %}-->
+
+{% block content %}
+<h1><a href="{% url 'create_new_task' idworker%}">Create new worker</a> </h1>
+<h6> List task: </h6>
+
+{% for item in db %}
+    <p><b>Description :{{item.description}}<br> Status: {{item.status}} {{form.status}}<br> Categories: {{item.categories}}<br> Task date of completion: {{item.date_of_completion}} </b></a></p>
+
+
+ {% endfor %}
+
+{% endblock %}
