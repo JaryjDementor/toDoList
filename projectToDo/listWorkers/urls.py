@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import list_workers, create_new_worker, TaskList, TaskComplete, TaskDelete, SortTaskListStatus, SortTaskListDate
+from .views import list_workers, create_new_worker, TaskList, TaskComplete, TaskDelete, SortTaskListStatus, SortTaskListDate,exportcsv
 
 urlpatterns = [
     path("list-workers", list_workers, name="list_workers"),
@@ -10,4 +10,5 @@ urlpatterns = [
     path('<str:id>/delete/', TaskDelete.as_view(), name='task_delete_url'),
     path('<int:id_worker>/sort-status', SortTaskListStatus.as_view(), name='task_sortstatus_list_url'),
     path('<int:id_worker>/sort-date', SortTaskListDate.as_view(), name='task_sortdate_list_url'),
+    path('<int:id_worker>/export-tasks', exportcsv, name='export_tasks'),
 ]

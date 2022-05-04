@@ -6,8 +6,10 @@
 {% endblock %}
 
 {% block content %}
-<h1><a href="{% url 'task_sortstatus_list_url'  id_worker %}">Sorting by Status </a></h>
-<h2><a href="{% url 'task_sortdate_list_url'  id_worker %}">Sorting by Date </a></h2>
+<h1><a href="{% url 'task_sortstatus_list_url'  id_worker %} " id="status">Sorting by Status </a></h1>
+<h1><a href="{% url 'task_sortdate_list_url'  id_worker %}" id="date">Sorting by Date </a></h1>
+<h1><a href="{% url 'export_tasks'  id_worker %}" id="export">Export tasks </a></h1>
+<h2>Tasks of the employee: {{info.name}}</h2>
     <div class="col-8 mt-5">
         <form class="form-inline justify-content-centr" id="createNewTaskForm" method="post" data-url="{% url 'task_list_url' id_worker%}">
             {% csrf_token %}

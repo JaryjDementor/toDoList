@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect
 from django.views import View
 from .forms import NewWorkerForm, NewTaskForm
 from .models import Workers, Employees_Task_List
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+import csv
 
 def list_workers(request):
     db = Workers.objects.all()
@@ -23,8 +24,9 @@ def create_new_worker(request):
 class TaskList(View):
     def get(self, request, id_worker):
         form = NewTaskForm()
+        info = Workers.objects.filter(id=id_worker)
         tasks = Employees_Task_List.objects.filter(idworker=id_worker)
-        return render(request, "listWorkers/detail_worker_create_task.html", {'form': form, 'tasks': tasks, 'id_worker': id_worker})
+        return render(request, "listWorkers/detail_worker_create_task.html", {'form': form, 'tasks': tasks, 'id_worker': id_worker, 'info': info})
     def post(self, request, id_worker):
         form = NewTaskForm(request.POST)
 
@@ -88,3 +90,16 @@ class SortTaskListDate(View):
             return JsonResponse({'task': model_to_dict(new_task)}, status=200)
         else:
             return redirect('task_list_url')
+
+
+
+def exportcsv(request, id_worker):
+    employee_tasks = Employees_Task_List.objects.filter(idworker=id_worker)
+    response = HttpResponse('workersTask/csv')
+    response['Content-Disposition'] = 'attachment; filename=students.csv'
+    writer = csv.writer(response)
+    writer.writerow(['Status', 'Id', 'Description', 'Categories', 'Date of completion'])
+    tasks = employee_tasks.values_list('status', 'id', 'description', 'categories', 'date_of_completion')
+    for task in tasks:
+        writer.writerow(task)
+    return response
