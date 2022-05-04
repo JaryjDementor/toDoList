@@ -10,7 +10,7 @@ $(document).ready(function(){
             data: serializedData,
             type: 'post',
             success: function(response) {
-                $("#taskList").append('<div class="card mb-1" id="taskCard" data-id="' + response.task.id + '"><div class="card-body">' + response.task.description + '<button type="button" class="close float-right" data-id="' + response.task.id + '"><span aria-hidden="true">&times;</span></button></div></div>')
+                $("#taskList").append('<div class="card mb-1" id="taskCard" data-id="' + response.task.id + '"><div class="card-body">' + 'Discription: ' + response.task.description + '<br>' + 'Status: ' + response.task.status + '<br>' + 'Categories: ' + response.task.categories + '<br>' + 'Date of completion: ' + response.task.date_of_completion + '<br>' + '<button type="button" class="close float-right" data-id="' + response.task.id + '"><span aria-hidden="true">&times;</span></button></div></div>')
             }
 
         })
@@ -54,3 +54,4 @@ $(document).ready(function(){
         })
     });
 });
+

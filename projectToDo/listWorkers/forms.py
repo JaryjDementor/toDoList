@@ -27,11 +27,10 @@ class NewWorkerForm(ModelForm):
 class NewTaskForm(ModelForm):
     class Meta:
         model = models.Employees_Task_List
-        fields = ["description", "status", "categories", "date_of_completion"]
+        fields = ["description", "categories", "date_of_completion"]
 
         widgets = {
             "description": Textarea(attrs={"class": "form-control", "placeholder": "description"}),
-            "status": Select(choices=status_task),
             "categories": Textarea(attrs={"class": "form-control", "placeholder": "categories"}),
             'date_of_completion': DateInput(),
         }
