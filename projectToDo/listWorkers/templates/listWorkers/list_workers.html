@@ -9,6 +9,6 @@
     <h6> Workers: </h6>
 
     {% for item in db %}
-        <p><a href="{% url 'detail_worker' item.id %}"><b>{{item.name}} {{item.surname}}</b></a></p>
+        <p><a href="{% url 'task_list_url' item.id %}"><b>{{item.name}} {{item.surname}}</b></a></p>
     {% endfor %}
 {% endblock %}

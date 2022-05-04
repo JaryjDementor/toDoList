@@ -4,3 +4,23 @@ div form {
     top: 0pt;
     left: 400pt;
 }
+
+div [id="taskCard"] {
+    color: red;
+    position: relative;
+    top: -466pt;
+    left: 0pt;
+
+}
+h1 a {
+    font-size: 40%;
+    position: relative;
+    top: 0pt;
+    left: 0pt;
+}
+h2 a {
+    font-size: 50%;
+    position: relative;
+    top: -36pt;
+    left: 105pt;
+}
