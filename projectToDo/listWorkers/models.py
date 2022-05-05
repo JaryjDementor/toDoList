@@ -1,7 +1,5 @@
 from django.db.models import Model, CharField, DateTimeField
 
-status_task = ([1, "task not complet"], [2, "task completed"])
-
 
 class Workers(Model):
     name = CharField("name", max_length=1000, null=False)

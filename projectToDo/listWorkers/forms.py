@@ -3,12 +3,6 @@ from . import models
 from django import forms
 
 
-status_task = [
-    ("task not complet", "Task not complet"),
-    ("task completed", "Task completed"),
-]
-
-
 class DateInput(forms.DateInput):
     input_type = "date"
 
