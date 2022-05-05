@@ -6,6 +6,10 @@ from .models import Workers, Employees_Task_List
 from django.http import JsonResponse, HttpResponse
 import csv
 
+def first_page(request):
+    return render(request, "listWorkers/first_page.html")
+
+
 def list_workers(request):
     db = Workers.objects.all()
     data = {"db": db}
@@ -24,9 +28,8 @@ def create_new_worker(request):
 class TaskList(View):
     def get(self, request, id_worker):
         form = NewTaskForm()
-        info = Workers.objects.filter(id=id_worker)
         tasks = Employees_Task_List.objects.filter(idworker=id_worker)
-        return render(request, "listWorkers/detail_worker_create_task.html", {'form': form, 'tasks': tasks, 'id_worker': id_worker, 'info': info})
+        return render(request, "listWorkers/detail_worker_create_task.html", {'form': form, 'tasks': tasks, 'id_worker': id_worker})
     def post(self, request, id_worker):
         form = NewTaskForm(request.POST)
 

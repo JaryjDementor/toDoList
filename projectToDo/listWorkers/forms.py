@@ -31,6 +31,6 @@ class NewTaskForm(ModelForm):
 
         widgets = {
             "description": Textarea(attrs={"class": "form-control", "placeholder": "description"}),
-            "categories": Textarea(attrs={"class": "form-control", "placeholder": "categories"}),
+            "categories": TextInput(attrs={"class": "form-control", "placeholder": "categories"}),
             'date_of_completion': DateInput(),
         }
