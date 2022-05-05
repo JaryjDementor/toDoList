@@ -6,6 +6,11 @@ from datetime import date
 
 class WorkersTasksAPIView(ObjectMultipleModelAPIView):
     querylist = [
-        {'queryset': Workers.objects.all(), 'serializer_class': WorkersSerializer},
-        {'queryset': Employees_Task_List.objects.filter(date_of_completion=date.today()), 'serializer_class': TasksWorkerSerializer}
+        {"queryset": Workers.objects.all(), "serializer_class": WorkersSerializer},
+        {
+            "queryset": Employees_Task_List.objects.filter(
+                date_of_completion=date.today()
+            ),
+            "serializer_class": TasksWorkerSerializer,
+        },
     ]
